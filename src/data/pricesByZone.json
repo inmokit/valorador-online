@@ -1,0 +1,388 @@
+{
+    "metadata": {
+        "source": "Datos estimados basados en estadísticas públicas del INE y portales inmobiliarios",
+        "lastUpdated": "2026-01",
+        "currency": "EUR",
+        "unit": "€/m²"
+    },
+    "zones": {
+        "28001": {
+            "city": "Madrid",
+            "zone": "Centro - Sol",
+            "pricePerSqm": 5800,
+            "tier": "premium"
+        },
+        "28004": {
+            "city": "Madrid",
+            "zone": "Chueca - Justicia",
+            "pricePerSqm": 5500,
+            "tier": "premium"
+        },
+        "28006": {
+            "city": "Madrid",
+            "zone": "Salamanca",
+            "pricePerSqm": 6200,
+            "tier": "luxury"
+        },
+        "28008": {
+            "city": "Madrid",
+            "zone": "Argüelles",
+            "pricePerSqm": 4800,
+            "tier": "premium"
+        },
+        "28010": {
+            "city": "Madrid",
+            "zone": "Alonso Martínez",
+            "pricePerSqm": 5200,
+            "tier": "premium"
+        },
+        "28013": {
+            "city": "Madrid",
+            "zone": "Gran Vía",
+            "pricePerSqm": 5400,
+            "tier": "premium"
+        },
+        "28014": {
+            "city": "Madrid",
+            "zone": "Retiro - Jerónimos",
+            "pricePerSqm": 5900,
+            "tier": "premium"
+        },
+        "28015": {
+            "city": "Madrid",
+            "zone": "Moncloa - Universidad",
+            "pricePerSqm": 4600,
+            "tier": "high"
+        },
+        "28020": {
+            "city": "Madrid",
+            "zone": "Tetuán",
+            "pricePerSqm": 4200,
+            "tier": "high"
+        },
+        "28028": {
+            "city": "Madrid",
+            "zone": "Prosperidad",
+            "pricePerSqm": 4400,
+            "tier": "high"
+        },
+        "28033": {
+            "city": "Madrid",
+            "zone": "Hortaleza",
+            "pricePerSqm": 3800,
+            "tier": "medium"
+        },
+        "28034": {
+            "city": "Madrid",
+            "zone": "Fuencarral",
+            "pricePerSqm": 3600,
+            "tier": "medium"
+        },
+        "28036": {
+            "city": "Madrid",
+            "zone": "Chamartín",
+            "pricePerSqm": 5000,
+            "tier": "premium"
+        },
+        "28040": {
+            "city": "Madrid",
+            "zone": "Ciudad Universitaria",
+            "pricePerSqm": 4300,
+            "tier": "high"
+        },
+        "28045": {
+            "city": "Madrid",
+            "zone": "Atocha - Delicias",
+            "pricePerSqm": 4100,
+            "tier": "high"
+        },
+        "28046": {
+            "city": "Madrid",
+            "zone": "AZCA - Castellana",
+            "pricePerSqm": 5600,
+            "tier": "premium"
+        },
+        "28050": {
+            "city": "Madrid",
+            "zone": "Las Tablas",
+            "pricePerSqm": 3400,
+            "tier": "medium"
+        },
+        "08001": {
+            "city": "Barcelona",
+            "zone": "Ciutat Vella - Raval",
+            "pricePerSqm": 4200,
+            "tier": "high"
+        },
+        "08002": {
+            "city": "Barcelona",
+            "zone": "Gòtic",
+            "pricePerSqm": 5000,
+            "tier": "premium"
+        },
+        "08003": {
+            "city": "Barcelona",
+            "zone": "Barceloneta",
+            "pricePerSqm": 5200,
+            "tier": "premium"
+        },
+        "08006": {
+            "city": "Barcelona",
+            "zone": "Gràcia - Diagonal",
+            "pricePerSqm": 5800,
+            "tier": "premium"
+        },
+        "08007": {
+            "city": "Barcelona",
+            "zone": "Eixample Dreta",
+            "pricePerSqm": 5500,
+            "tier": "premium"
+        },
+        "08008": {
+            "city": "Barcelona",
+            "zone": "Passeig de Gràcia",
+            "pricePerSqm": 6500,
+            "tier": "luxury"
+        },
+        "08010": {
+            "city": "Barcelona",
+            "zone": "Eixample Esquerra",
+            "pricePerSqm": 4800,
+            "tier": "premium"
+        },
+        "08015": {
+            "city": "Barcelona",
+            "zone": "Sant Antoni",
+            "pricePerSqm": 4600,
+            "tier": "high"
+        },
+        "08017": {
+            "city": "Barcelona",
+            "zone": "Sarrià",
+            "pricePerSqm": 5400,
+            "tier": "premium"
+        },
+        "08021": {
+            "city": "Barcelona",
+            "zone": "Sant Gervasi",
+            "pricePerSqm": 5600,
+            "tier": "premium"
+        },
+        "08024": {
+            "city": "Barcelona",
+            "zone": "Gràcia",
+            "pricePerSqm": 4400,
+            "tier": "high"
+        },
+        "08028": {
+            "city": "Barcelona",
+            "zone": "Les Corts",
+            "pricePerSqm": 4200,
+            "tier": "high"
+        },
+        "08034": {
+            "city": "Barcelona",
+            "zone": "Pedralbes",
+            "pricePerSqm": 5800,
+            "tier": "premium"
+        },
+        "46001": {
+            "city": "Valencia",
+            "zone": "Ciutat Vella",
+            "pricePerSqm": 2800,
+            "tier": "high"
+        },
+        "46002": {
+            "city": "Valencia",
+            "zone": "L'Eixample",
+            "pricePerSqm": 2600,
+            "tier": "high"
+        },
+        "46003": {
+            "city": "Valencia",
+            "zone": "El Carme",
+            "pricePerSqm": 2500,
+            "tier": "medium"
+        },
+        "46004": {
+            "city": "Valencia",
+            "zone": "Gran Vía",
+            "pricePerSqm": 2700,
+            "tier": "high"
+        },
+        "46005": {
+            "city": "Valencia",
+            "zone": "Ruzafa",
+            "pricePerSqm": 2900,
+            "tier": "high"
+        },
+        "46010": {
+            "city": "Valencia",
+            "zone": "El Pla del Real",
+            "pricePerSqm": 2400,
+            "tier": "medium"
+        },
+        "46020": {
+            "city": "Valencia",
+            "zone": "Benimaclet",
+            "pricePerSqm": 2200,
+            "tier": "medium"
+        },
+        "41001": {
+            "city": "Sevilla",
+            "zone": "Casco Antiguo",
+            "pricePerSqm": 2600,
+            "tier": "high"
+        },
+        "41002": {
+            "city": "Sevilla",
+            "zone": "Santa Cruz",
+            "pricePerSqm": 3000,
+            "tier": "high"
+        },
+        "41003": {
+            "city": "Sevilla",
+            "zone": "Arenal",
+            "pricePerSqm": 2800,
+            "tier": "high"
+        },
+        "41004": {
+            "city": "Sevilla",
+            "zone": "San Vicente",
+            "pricePerSqm": 2700,
+            "tier": "high"
+        },
+        "41005": {
+            "city": "Sevilla",
+            "zone": "Nervión",
+            "pricePerSqm": 2400,
+            "tier": "medium"
+        },
+        "41011": {
+            "city": "Sevilla",
+            "zone": "Los Remedios",
+            "pricePerSqm": 2500,
+            "tier": "medium"
+        },
+        "48001": {
+            "city": "Bilbao",
+            "zone": "Casco Viejo",
+            "pricePerSqm": 3200,
+            "tier": "high"
+        },
+        "48005": {
+            "city": "Bilbao",
+            "zone": "Indautxu",
+            "pricePerSqm": 4200,
+            "tier": "premium"
+        },
+        "48007": {
+            "city": "Bilbao",
+            "zone": "Abando",
+            "pricePerSqm": 4500,
+            "tier": "premium"
+        },
+        "48009": {
+            "city": "Bilbao",
+            "zone": "Gran Vía",
+            "pricePerSqm": 4000,
+            "tier": "high"
+        },
+        "48011": {
+            "city": "Bilbao",
+            "zone": "Deusto",
+            "pricePerSqm": 3400,
+            "tier": "medium"
+        },
+        "29001": {
+            "city": "Málaga",
+            "zone": "Centro Histórico",
+            "pricePerSqm": 2800,
+            "tier": "high"
+        },
+        "29005": {
+            "city": "Málaga",
+            "zone": "Malagueta",
+            "pricePerSqm": 3200,
+            "tier": "high"
+        },
+        "29010": {
+            "city": "Málaga",
+            "zone": "Teatinos",
+            "pricePerSqm": 2200,
+            "tier": "medium"
+        },
+        "29016": {
+            "city": "Málaga",
+            "zone": "El Limonar",
+            "pricePerSqm": 3000,
+            "tier": "high"
+        },
+        "50001": {
+            "city": "Zaragoza",
+            "zone": "Centro",
+            "pricePerSqm": 2000,
+            "tier": "medium"
+        },
+        "50004": {
+            "city": "Zaragoza",
+            "zone": "Gran Vía",
+            "pricePerSqm": 2200,
+            "tier": "medium"
+        },
+        "50006": {
+            "city": "Zaragoza",
+            "zone": "Romareda",
+            "pricePerSqm": 2400,
+            "tier": "high"
+        },
+        "35001": {
+            "city": "Las Palmas",
+            "zone": "Vegueta",
+            "pricePerSqm": 1800,
+            "tier": "medium"
+        },
+        "35010": {
+            "city": "Las Palmas",
+            "zone": "Las Canteras",
+            "pricePerSqm": 2400,
+            "tier": "high"
+        },
+        "38001": {
+            "city": "Santa Cruz de Tenerife",
+            "zone": "Centro",
+            "pricePerSqm": 1600,
+            "tier": "medium"
+        },
+        "38002": {
+            "city": "Santa Cruz de Tenerife",
+            "zone": "Rambla",
+            "pricePerSqm": 1800,
+            "tier": "medium"
+        },
+        "07001": {
+            "city": "Palma de Mallorca",
+            "zone": "Casco Antiguo",
+            "pricePerSqm": 4200,
+            "tier": "premium"
+        },
+        "07012": {
+            "city": "Palma de Mallorca",
+            "zone": "Paseo Marítimo",
+            "pricePerSqm": 4800,
+            "tier": "premium"
+        },
+        "07014": {
+            "city": "Palma de Mallorca",
+            "zone": "Son Armadams",
+            "pricePerSqm": 3800,
+            "tier": "high"
+        }
+    },
+    "defaults": {
+        "spain_average": 1850,
+        "capital_average": 3200,
+        "coastal_premium": 1.15,
+        "island_premium": 1.20
+    }
+}

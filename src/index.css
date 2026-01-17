@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* Custom theme based on design */
+:root {
+  --color-primary: #ec5b13;
+  --color-background-light: #f6f7f8;
+  --color-background-dark: #101922;
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #1a242f;
+  --color-border-light: #e5e7eb;
+  --color-border-dark: #2d3748;
+  --color-text-primary: #111418;
+  --color-text-secondary: #637588;
+  --color-text-dark-primary: #ffffff;
+  --color-text-dark-secondary: #9dabb9;
+}
+
+/* Base styles */
+html {
+  font-family: 'Manrope', 'Noto Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: var(--color-background-light);
+  color: var(--color-text-primary);
+}
+
+.dark body {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-dark-primary);
+}
+
+/* Material Symbols configuration */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Number input arrows removal */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Theme colors as Tailwind utilities */
+@theme {
+  --color-primary: #ec5b13;
+  --color-background-light: #f6f7f8;
+  --color-background-dark: #101922;
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #1a242f;
+  --color-border-light: #e5e7eb;
+  --color-border-dark: #2d3748;
+}
