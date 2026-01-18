@@ -195,3 +195,41 @@ export async function getValuationsByClient(clientId: string): Promise<SavedValu
         streetViewUrl: item.street_view_url,
     }));
 }
+
+/**
+ * Send valuation email via Edge Function
+ */
+export async function sendValuationEmail(data: {
+    leadName: string;
+    leadEmail: string;
+    address: string;
+    city?: string;
+    postalCode?: string;
+    estimatedValue: number;
+    estimatedValueMin: number;
+    estimatedValueMax: number;
+    surface?: number;
+    bedrooms?: number;
+    bathrooms?: number;
+    reportUrl: string;
+    agentName?: string;
+    agencyName?: string;
+}): Promise<boolean> {
+    try {
+        const { data: result, error } = await supabase.functions.invoke('send-valuation-email', {
+            body: data,
+        });
+
+        if (error) {
+            console.error('Error sending valuation email:', error);
+            return false;
+        }
+
+        console.log('Valuation email sent:', result);
+        return true;
+    } catch (err) {
+        console.error('Error calling send-valuation-email function:', err);
+        return false;
+    }
+}
+

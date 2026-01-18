@@ -3,7 +3,7 @@ import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore } from '../../store/valuationStore';
 import { useClient } from '../../context/ClientContext';
 import { calculateValuation, formatPrice, getZoneInfo } from '../../lib/api/valuation';
-import { saveValuation } from '../../lib/api/valuations';
+import { saveValuation, sendValuationEmail } from '../../lib/api/valuations';
 import { getStreetViewUrl } from '../../lib/api/streetView';
 import type { ValuationResult as ValuationResultType } from '../../store/valuationStore';
 
@@ -75,6 +75,29 @@ export default function ValuationResult() {
                     if (saved) {
                         setSavedValuationToken(saved.reportToken);
                         console.log('Valuation saved with token:', saved.reportToken);
+
+                        // Send email notification
+                        const reportUrl = `https://valorador-online.vercel.app/v/${saved.reportToken}`;
+                        sendValuationEmail({
+                            leadName: leadData.name,
+                            leadEmail: leadData.email,
+                            address: propertyData.address || '',
+                            city: propertyData.city,
+                            postalCode: propertyData.postalCode,
+                            estimatedValue: result.estimated,
+                            estimatedValueMin: result.conservative,
+                            estimatedValueMax: result.optimistic,
+                            surface: propertyData.surface,
+                            bedrooms: propertyData.bedrooms,
+                            bathrooms: propertyData.bathrooms,
+                            reportUrl,
+                            agentName: client.agent_name,
+                            agencyName: client.agency_name,
+                        }).then((sent) => {
+                            if (sent) {
+                                console.log('Valuation email sent successfully');
+                            }
+                        });
                     }
                 }
 
