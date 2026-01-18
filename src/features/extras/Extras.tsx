@@ -1,5 +1,6 @@
 import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore } from '../../store/valuationStore';
+import ValoradorHeader from '../../components/ValoradorHeader';
 
 const EXTRAS_LIST = [
     { id: 'terraza', label: 'Terraza' },
@@ -30,8 +31,8 @@ function ExtraButton({ label, isSelected, onClick }: ExtraButtonProps) {
         <button
             onClick={onClick}
             className={`relative group flex flex-col items-start justify-center gap-3 rounded-lg border p-4 text-left shadow-sm transition-all active:scale-[0.98] ${isSelected
-                    ? 'border-2 border-primary bg-primary/5 dark:bg-primary/10'
-                    : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-[#1a2634] hover:border-primary/50'
+                ? 'border-2 border-primary bg-primary/5 dark:bg-primary/10'
+                : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-[#1a2634] hover:border-primary/50'
                 }`}
         >
             {isSelected && (
@@ -62,30 +63,13 @@ export default function Extras() {
 
     return (
         <div className="relative flex h-full min-dvh w-full flex-col overflow-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
-            {/* Header */}
-            <div className="flex items-center px-4 py-3 justify-between sticky top-0 z-10 bg-background-light dark:bg-background-dark/95 backdrop-blur-sm">
-                <button
-                    onClick={() => goBack()}
-                    className="text-slate-900 dark:text-white flex size-10 shrink-0 items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
-                >
-                    <span className="material-symbols-outlined text-[24px]">arrow_back</span>
-                </button>
-                <h2 className="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">
-                    Valoración
-                </h2>
-            </div>
-
-            {/* Progress */}
-            <div className="flex w-full flex-col items-center justify-center gap-2 py-2 px-4">
-                <div className="flex w-full flex-row items-center justify-center gap-2">
-                    <div className="h-1.5 flex-1 rounded-full bg-primary"></div>
-                    <div className="h-1.5 flex-1 rounded-full bg-primary"></div>
-                    <div className="h-1.5 flex-1 rounded-full bg-primary"></div>
-                    <div className="h-1.5 flex-1 rounded-full bg-slate-300 dark:bg-slate-700"></div>
-                    <div className="h-1.5 flex-1 rounded-full bg-slate-300 dark:bg-slate-700"></div>
-                </div>
-                <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Paso 3 de 5</p>
-            </div>
+            {/* Unified Header */}
+            <ValoradorHeader
+                title="Valoración"
+                currentStep={4}
+                totalSteps={5}
+                onBack={goBack}
+            />
 
             {/* Content */}
             <div className="flex-1 flex flex-col px-4 pb-24 overflow-y-auto no-scrollbar">

@@ -1,5 +1,6 @@
 import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore, type PropertyData } from '../../store/valuationStore';
+import ValoradorHeader from '../../components/ValoradorHeader';
 
 interface FinishOptionProps {
     icon: string;
@@ -17,8 +18,8 @@ function FinishOption({ icon, title, subtitle, colorClass, value, selected, onCh
     return (
         <label
             className={`relative flex items-center gap-4 rounded-lg border p-4 cursor-pointer transition-all shadow-sm ${isSelected
-                    ? 'border-primary bg-primary/5 dark:bg-primary/10'
-                    : 'border-gray-200 dark:border-[#3b4754] bg-white dark:bg-[#1a2632] hover:border-primary/50'
+                ? 'border-primary bg-primary/5 dark:bg-primary/10'
+                : 'border-gray-200 dark:border-[#3b4754] bg-white dark:bg-[#1a2632] hover:border-primary/50'
                 }`}
         >
             <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg ${colorClass}`}>
@@ -51,25 +52,13 @@ export default function Finishes() {
 
     return (
         <div className="relative flex h-full min-dvh w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-xl">
-            <header className="flex items-center justify-between px-4 py-3 bg-background-light dark:bg-background-dark sticky top-0 z-10">
-                <button
-                    onClick={() => goBack()}
-                    className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-gray-200 dark:hover:bg-white/10 text-[#111418] dark:text-white transition-colors"
-                >
-                    <span className="material-symbols-outlined text-2xl">arrow_back</span>
-                </button>
-                <h2 className="text-lg font-bold leading-tight tracking-tight text-center flex-1 pr-10">
-                    Valoración
-                </h2>
-            </header>
-
-            <div className="flex w-full flex-row items-center justify-center gap-2 py-4 px-4">
-                <div className="h-1.5 w-1.5 rounded-full bg-primary/40"></div>
-                <div className="h-1.5 w-1.5 rounded-full bg-primary/40"></div>
-                <div className="h-1.5 w-8 rounded-full bg-primary"></div>
-                <div className="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-gray-700"></div>
-                <div className="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-gray-700"></div>
-            </div>
+            {/* Unified Header */}
+            <ValoradorHeader
+                title="Valoración"
+                currentStep={5}
+                totalSteps={5}
+                onBack={goBack}
+            />
 
             <main className="flex-1 flex flex-col px-5 pb-24">
                 <h1 className="text-2xl md:text-[32px] font-bold leading-tight text-left pb-3 pt-2 text-[#111418] dark:text-white">

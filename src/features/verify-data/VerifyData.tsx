@@ -1,5 +1,6 @@
 import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore } from '../../store/valuationStore';
+import ValoradorHeader from '../../components/ValoradorHeader';
 
 export default function VerifyData() {
     const { navigateTo, goBack } = useValoradorNavigation();
@@ -34,26 +35,13 @@ export default function VerifyData() {
 
     return (
         <div className="relative flex h-full min-dvh w-full flex-col max-w-md mx-auto shadow-xl overflow-hidden bg-background-light dark:bg-background-dark">
-            {/* TopAppBar */}
-            <div className="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between shrink-0 z-10">
-                <button
-                    onClick={() => goBack()}
-                    className="text-[#111418] dark:text-white flex size-12 shrink-0 items-center justify-center rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
-                >
-                    <span className="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
-                </button>
-                <h2 className="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
-                    Detalles de la Propiedad
-                </h2>
-            </div>
-
-            {/* PageIndicators */}
-            <div className="flex w-full flex-row items-center justify-center gap-2 py-3 shrink-0 bg-background-light dark:bg-background-dark">
-                <div className="h-1.5 w-1.5 rounded-full bg-[#3b4754]/40 dark:bg-[#3b4754]"></div>
-                <div className="h-1.5 w-8 rounded-full bg-primary"></div>
-                <div className="h-1.5 w-1.5 rounded-full bg-[#3b4754]/40 dark:bg-[#3b4754]"></div>
-                <div className="h-1.5 w-1.5 rounded-full bg-[#3b4754]/40 dark:bg-[#3b4754]"></div>
-            </div>
+            {/* Unified Header */}
+            <ValoradorHeader
+                title="Valoración"
+                currentStep={2}
+                totalSteps={5}
+                onBack={goBack}
+            />
 
             {/* Main Scrollable Content */}
             <main className="flex-1 overflow-y-auto pb-24 no-scrollbar">

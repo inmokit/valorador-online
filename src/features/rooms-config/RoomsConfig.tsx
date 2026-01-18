@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore } from '../../store/valuationStore';
+import ValoradorHeader from '../../components/ValoradorHeader';
 
 // Calculate smart room/bath defaults based on surface area
 function getSmartDefaults(surface: number): { bedrooms: number; bathrooms: number } {
@@ -44,33 +45,13 @@ export default function RoomsConfig() {
 
     return (
         <div className="relative flex h-full min-dvh w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
-            {/* Header */}
-            <div className="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between">
-                <div
-                    onClick={() => goBack()}
-                    className="text-gray-900 dark:text-white flex size-12 shrink-0 items-center justify-start cursor-pointer"
-                >
-                    <span className="material-symbols-outlined text-2xl">arrow_back_ios</span>
-                </div>
-                <h2 className="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
-                    Valoración
-                </h2>
-            </div>
-
-            {/* Progress Bar */}
-            <div className="flex flex-col gap-3 px-4 pt-2">
-                <div className="flex gap-6 justify-between">
-                    <p className="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal">
-                        Paso 3 de 5
-                    </p>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal">
-                        60%
-                    </p>
-                </div>
-                <div className="rounded-full bg-gray-200 dark:bg-[#3b4754] h-2 w-full overflow-hidden">
-                    <div className="h-full rounded-full bg-primary" style={{ width: '60%' }}></div>
-                </div>
-            </div>
+            {/* Unified Header */}
+            <ValoradorHeader
+                title="Valoración"
+                currentStep={3}
+                totalSteps={5}
+                onBack={goBack}
+            />
 
             {/* Main Content */}
             <div className="flex-1 flex flex-col px-4 pt-6 pb-24">
