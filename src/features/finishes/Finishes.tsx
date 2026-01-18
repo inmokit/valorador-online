@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore, type PropertyData } from '../../store/valuationStore';
 
 interface FinishOptionProps {
@@ -40,7 +40,7 @@ function FinishOption({ icon, title, subtitle, colorClass, value, selected, onCh
 }
 
 export default function Finishes() {
-    const navigate = useNavigate();
+    const { navigateTo, goBack } = useValoradorNavigation();
     const { propertyData, updatePropertyData } = useValuationStore();
 
     const selected = propertyData.finishQuality || 'good';
@@ -53,7 +53,7 @@ export default function Finishes() {
         <div className="relative flex h-full min-dvh w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-xl">
             <header className="flex items-center justify-between px-4 py-3 bg-background-light dark:bg-background-dark sticky top-0 z-10">
                 <button
-                    onClick={() => navigate(-1)}
+                    onClick={() => goBack()}
                     className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-gray-200 dark:hover:bg-white/10 text-[#111418] dark:text-white transition-colors"
                 >
                     <span className="material-symbols-outlined text-2xl">arrow_back</span>
@@ -130,7 +130,7 @@ export default function Finishes() {
 
             <div className="fixed bottom-0 left-0 right-0 p-4 bg-background-light dark:bg-background-dark/80 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 z-20 max-w-md mx-auto">
                 <button
-                    onClick={() => navigate('/resultado')}
+                    onClick={() => navigateTo('resultado')}
                     className="flex w-full items-center justify-center rounded-lg bg-primary px-5 py-3.5 text-base font-bold leading-normal text-white shadow-lg transition-transform active:scale-[0.98] hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                     Continuar

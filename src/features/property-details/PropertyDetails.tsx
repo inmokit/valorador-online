@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore } from '../../store/valuationStore';
 import { getCadastralDataByCoordinates, type CadastralData } from '../../lib/api/catastro';
 import { getStreetViewUrl } from '../../lib/api/streetView';
 
 export default function PropertyDetails() {
-    const navigate = useNavigate();
+    const { navigateTo, goBack } = useValoradorNavigation();
     const { propertyData, updatePropertyData, isLoadingCatastro, setLoadingCatastro } = useValuationStore();
 
     const [cadastralData, setCadastralData] = useState<CadastralData | null>(null);
@@ -133,7 +133,7 @@ export default function PropertyDetails() {
                 constructionYear: cadastralData.constructionYear,
             });
         }
-        navigate('/verificar');
+        navigateTo('verificar');
     };
 
     return (
@@ -141,7 +141,7 @@ export default function PropertyDetails() {
             {/* TopAppBar */}
             <header className="sticky top-0 z-20 flex items-center justify-between bg-background-light/90 dark:bg-background-dark/90 px-4 py-3 backdrop-blur-md border-b border-transparent dark:border-white/5 transition-all duration-200">
                 <button
-                    onClick={() => navigate(-1)}
+                    onClick={() => goBack()}
                     className="group flex size-10 items-center justify-center rounded-lg text-[#111418] dark:text-white hover:bg-black/5 dark:hover:bg-white/10 active:scale-95 transition-all"
                 >
                     <span className="material-symbols-outlined text-[24px]">arrow_back</span>

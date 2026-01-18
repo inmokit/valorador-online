@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore } from '../../store/valuationStore';
 import { calculateValuation, formatPrice, getZoneInfo } from '../../lib/api/valuation';
 import type { ValuationResult as ValuationResultType } from '../../store/valuationStore';
 
 export default function ValuationResult() {
-    const navigate = useNavigate();
+    const { goBack } = useValoradorNavigation();
     const { propertyData, valuationResult, setValuationResult, isLoadingValuation, setLoadingValuation } = useValuationStore();
 
     const [email, setEmail] = useState('');
@@ -91,7 +91,7 @@ export default function ValuationResult() {
             {/* Header */}
             <header className="flex items-center justify-between px-4 py-3 bg-background-light dark:bg-background-dark sticky top-0 z-10">
                 <button
-                    onClick={() => navigate(-1)}
+                    onClick={() => goBack()}
                     className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-gray-200 dark:hover:bg-white/10 text-[#111418] dark:text-white transition-colors"
                 >
                     <span className="material-symbols-outlined text-2xl">arrow_back</span>

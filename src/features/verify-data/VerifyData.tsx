@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom';
+import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore } from '../../store/valuationStore';
 
 export default function VerifyData() {
-    const navigate = useNavigate();
+    const { navigateTo, goBack } = useValoradorNavigation();
     const { propertyData, updatePropertyData } = useValuationStore();
 
     const surface = propertyData.surface || 120;
@@ -37,7 +37,7 @@ export default function VerifyData() {
             {/* TopAppBar */}
             <div className="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between shrink-0 z-10">
                 <button
-                    onClick={() => navigate(-1)}
+                    onClick={() => goBack()}
                     className="text-[#111418] dark:text-white flex size-12 shrink-0 items-center justify-center rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                 >
                     <span className="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
@@ -167,7 +167,7 @@ export default function VerifyData() {
             {/* Sticky Footer */}
             <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-background-light via-background-light to-transparent dark:from-background-dark dark:via-background-dark dark:to-transparent pt-8">
                 <button
-                    onClick={() => navigate('/habitaciones')}
+                    onClick={() => navigateTo('habitaciones')}
                     className="w-full flex items-center justify-center gap-2 rounded-lg bg-primary py-4 px-6 text-base font-bold text-white shadow-lg shadow-primary/30 hover:bg-orange-600 active:scale-[0.98] transition-all"
                 >
                     <span>Continuar</span>

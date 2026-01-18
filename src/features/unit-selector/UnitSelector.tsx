@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom';
+import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore } from '../../store/valuationStore';
 
 export default function UnitSelector() {
-    const navigate = useNavigate();
+    const { navigateTo, goBack } = useValoradorNavigation();
     const { propertyData, buildingUnits, updatePropertyData, selectUnit } = useValuationStore();
 
     // Parse floor and door from inmueble data
@@ -74,7 +74,7 @@ export default function UnitSelector() {
             postalCode: direccion.codigoPostal || propertyData.postalCode,
         });
 
-        navigate('/detalles');
+        navigateTo('detalles');
     };
 
     // If no units to show, go back
@@ -83,7 +83,7 @@ export default function UnitSelector() {
             <div className="relative flex h-full min-dvh w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark items-center justify-center p-6">
                 <p className="text-[#637588] dark:text-[#9ca3af]">No se encontraron viviendas</p>
                 <button
-                    onClick={() => navigate(-1)}
+                    onClick={() => goBack()}
                     className="mt-4 px-6 py-3 bg-primary text-white rounded-lg"
                 >
                     Volver
@@ -97,7 +97,7 @@ export default function UnitSelector() {
             {/* TopAppBar */}
             <div className="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between shrink-0 z-10">
                 <button
-                    onClick={() => navigate(-1)}
+                    onClick={() => goBack()}
                     className="text-[#111418] dark:text-white flex size-12 shrink-0 items-center justify-center rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                 >
                     <span className="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>

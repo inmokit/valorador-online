@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore } from '../../store/valuationStore';
 
 const EXTRAS_LIST = [
@@ -47,7 +47,7 @@ function ExtraButton({ label, isSelected, onClick }: ExtraButtonProps) {
 }
 
 export default function Extras() {
-    const navigate = useNavigate();
+    const { navigateTo, goBack } = useValoradorNavigation();
     const { propertyData, updatePropertyData } = useValuationStore();
 
     const selected = propertyData.extras || [];
@@ -65,7 +65,7 @@ export default function Extras() {
             {/* Header */}
             <div className="flex items-center px-4 py-3 justify-between sticky top-0 z-10 bg-background-light dark:bg-background-dark/95 backdrop-blur-sm">
                 <button
-                    onClick={() => navigate(-1)}
+                    onClick={() => goBack()}
                     className="text-slate-900 dark:text-white flex size-10 shrink-0 items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
                 >
                     <span className="material-symbols-outlined text-[24px]">arrow_back</span>
@@ -118,7 +118,7 @@ export default function Extras() {
             {/* Sticky Footer */}
             <div className="fixed bottom-0 left-0 right-0 p-4 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] max-w-md mx-auto z-20">
                 <button
-                    onClick={() => navigate('/acabados')}
+                    onClick={() => navigateTo('acabados')}
                     className="w-full flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 active:scale-[0.98] transition-all shadow-lg shadow-primary/30"
                 >
                     <span className="truncate">Continuar</span>

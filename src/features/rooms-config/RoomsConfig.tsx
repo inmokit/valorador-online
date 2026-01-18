@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore } from '../../store/valuationStore';
 
 // Calculate smart room/bath defaults based on surface area
@@ -22,7 +22,7 @@ function getSmartDefaults(surface: number): { bedrooms: number; bathrooms: numbe
 }
 
 export default function RoomsConfig() {
-    const navigate = useNavigate();
+    const { navigateTo, goBack } = useValoradorNavigation();
     const { propertyData, updatePropertyData } = useValuationStore();
 
     // Set smart defaults based on surface area when component mounts
@@ -47,7 +47,7 @@ export default function RoomsConfig() {
             {/* Header */}
             <div className="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between">
                 <div
-                    onClick={() => navigate(-1)}
+                    onClick={() => goBack()}
                     className="text-gray-900 dark:text-white flex size-12 shrink-0 items-center justify-start cursor-pointer"
                 >
                     <span className="material-symbols-outlined text-2xl">arrow_back_ios</span>
@@ -156,7 +156,7 @@ export default function RoomsConfig() {
             {/* Sticky Footer */}
             <div className="fixed bottom-0 left-0 right-0 p-4 bg-background-light dark:bg-background-dark/95 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800 z-10">
                 <button
-                    onClick={() => navigate('/extras')}
+                    onClick={() => navigateTo('extras')}
                     className="w-full flex items-center justify-center bg-primary hover:bg-orange-600 text-white font-bold py-4 px-6 rounded-lg transition-all shadow-lg shadow-primary/25 text-base active:scale-[0.98]"
                 >
                     Continuar

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore } from '../../store/valuationStore';
 import {
     useGooglePlacesAutocomplete,
@@ -22,7 +22,7 @@ function useDebounce<T>(value: T, delay: number): T {
 }
 
 export default function AddressSearch() {
-    const navigate = useNavigate();
+    const { navigateTo, goBack } = useValoradorNavigation();
     const { updatePropertyData } = useValuationStore();
     const [searchTerm, setSearchTerm] = useState('');
     const [results, setResults] = useState<PlacePrediction[]>([]);
@@ -89,7 +89,7 @@ export default function AddressSearch() {
                                 updatePropertyData({
                                     cadastralReference: cadastralData.cadastralReference,
                                 });
-                                navigate('/seleccionar-vivienda');
+                                navigateTo('seleccionar-vivienda');
                                 return;
                             }
                         }
@@ -105,7 +105,7 @@ export default function AddressSearch() {
                 });
             }
 
-            navigate('/detalles');
+            navigateTo('detalles');
         } catch (error) {
             console.error('Error getting place details:', error);
             // Navigate anyway with basic data
@@ -113,11 +113,11 @@ export default function AddressSearch() {
                 address: prediction.mainText,
                 city: prediction.secondaryText.split(',')[0].trim(),
             });
-            navigate('/detalles');
+            navigateTo('detalles');
         } finally {
             setIsSearching(false);
         }
-    }, [updatePropertyData, navigate, getPlaceDetails]);
+    }, [updatePropertyData, navigateTo, getPlaceDetails]);
 
     // Handle using current location
     const handleUseLocation = useCallback(async () => {
@@ -141,7 +141,7 @@ export default function AddressSearch() {
                     latitude: coords.latitude,
                     longitude: coords.longitude,
                 });
-                navigate('/detalles');
+                navigateTo('detalles');
             } else {
                 // If reverse geocode fails, still proceed with coordinates
                 updatePropertyData({
@@ -149,7 +149,7 @@ export default function AddressSearch() {
                     latitude: coords.latitude,
                     longitude: coords.longitude,
                 });
-                navigate('/detalles');
+                navigateTo('detalles');
             }
         } catch (error) {
             console.error('Error getting location:', error);
@@ -173,7 +173,7 @@ export default function AddressSearch() {
         } finally {
             setIsLoadingLocation(false);
         }
-    }, [updatePropertyData, navigate]);
+    }, [updatePropertyData, navigateTo]);
 
     // Show loading state while Google Maps is loading
     const showLoadingIndicator = isSearching || (isGoogleLoading && searchTerm.length >= 3);
@@ -183,7 +183,7 @@ export default function AddressSearch() {
             {/* Header */}
             <div className="flex items-center px-4 py-3 justify-between sticky top-0 z-10 bg-background-light dark:bg-background-dark">
                 <button
-                    onClick={() => navigate(-1)}
+                    onClick={() => goBack()}
                     className="text-[#111418] dark:text-white flex size-10 shrink-0 items-center justify-center rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
                 >
                     <span className="material-symbols-outlined text-[24px]">arrow_back</span>
