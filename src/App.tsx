@@ -9,6 +9,7 @@ import Extras from './features/extras/Extras'
 import Finishes from './features/finishes/Finishes'
 import LeadCapture from './features/lead-capture/LeadCapture'
 import ValuationResult from './features/result/ValuationResult'
+import PublicReport from './features/report/PublicReport'
 
 // Loading component
 function LoadingScreen() {
@@ -85,6 +86,9 @@ function App() {
   return (
     <div className="min-h-dvh bg-background-light dark:bg-background-dark font-[Manrope] antialiased">
       <Routes>
+        {/* Public valuation report */}
+        <Route path="/v/:token" element={<PublicReport />} />
+
         {/* Client-specific routes */}
         <Route path="/:slug/*" element={<ClientWrapper />} />
 
