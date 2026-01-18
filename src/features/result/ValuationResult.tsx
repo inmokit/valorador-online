@@ -100,7 +100,7 @@ export default function ValuationResult() {
                             agentName: client.agent_name,
                             agencyName: client.agency_name,
                             agentPhotoUrl: client.agent_photo_url,
-                            agencyLogoUrl: client.logo_url,
+                            agencyLogoUrl: client.agency_logo_url,
                         }).then((sent) => {
                             if (sent) {
                                 console.log('Valuation email sent successfully');
