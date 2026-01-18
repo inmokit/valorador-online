@@ -80,6 +80,20 @@ interface ValuationStore {
 
     // Reset
     reset: () => void;
+
+    // Lead data for capture
+    leadData: LeadData | null;
+    updateLeadData: (data: LeadData) => void;
+
+    // Saved valuation token
+    savedValuationToken: string | null;
+    setSavedValuationToken: (token: string) => void;
+}
+
+export interface LeadData {
+    name: string;
+    email: string;
+    phone?: string;
 }
 
 const initialPropertyData: Partial<PropertyData> = {
@@ -127,6 +141,12 @@ export const useValuationStore = create<ValuationStore>((set) => ({
     selectedUnitIndex: null,
     selectUnit: (index) => set({ selectedUnitIndex: index }),
 
+    leadData: null,
+    updateLeadData: (data) => set({ leadData: data }),
+
+    savedValuationToken: null,
+    setSavedValuationToken: (token) => set({ savedValuationToken: token }),
+
     reset: () => set({
         currentStep: 1,
         propertyData: initialPropertyData,
@@ -134,5 +154,7 @@ export const useValuationStore = create<ValuationStore>((set) => ({
         userContact: null,
         buildingUnits: [],
         selectedUnitIndex: null,
+        leadData: null,
+        savedValuationToken: null,
     }),
 }));

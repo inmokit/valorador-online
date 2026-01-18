@@ -52,11 +52,10 @@ export default function Finishes() {
 
     return (
         <div className="relative flex h-full min-dvh w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-xl">
-            {/* Unified Header */}
             <ValoradorHeader
                 title="Valoración"
                 currentStep={5}
-                totalSteps={5}
+                totalSteps={6}
                 onBack={goBack}
             />
 
@@ -119,7 +118,7 @@ export default function Finishes() {
 
             <div className="fixed bottom-0 left-0 right-0 p-4 bg-background-light dark:bg-background-dark/80 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 z-20 max-w-md mx-auto">
                 <button
-                    onClick={() => navigateTo('resultado')}
+                    onClick={() => navigateTo('datos')}
                     className="flex w-full items-center justify-center rounded-lg bg-primary px-5 py-3.5 text-base font-bold leading-normal text-white shadow-lg transition-transform active:scale-[0.98] hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                     Continuar

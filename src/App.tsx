@@ -7,6 +7,7 @@ import VerifyData from './features/verify-data/VerifyData'
 import RoomsConfig from './features/rooms-config/RoomsConfig'
 import Extras from './features/extras/Extras'
 import Finishes from './features/finishes/Finishes'
+import LeadCapture from './features/lead-capture/LeadCapture'
 import ValuationResult from './features/result/ValuationResult'
 
 // Loading component
@@ -45,6 +46,7 @@ function ValoradorContent() {
       <Route path="habitaciones" element={<RoomsConfig />} />
       <Route path="extras" element={<Extras />} />
       <Route path="acabados" element={<Finishes />} />
+      <Route path="datos" element={<LeadCapture />} />
       <Route path="resultado" element={<ValuationResult />} />
       <Route path="*" element={<Navigate to="" replace />} />
     </Routes>
