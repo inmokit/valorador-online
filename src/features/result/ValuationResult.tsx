@@ -1,12 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useValoradorNavigation } from '../../lib/hooks/useValoradorNavigation';
 import { useValuationStore } from '../../store/valuationStore';
+import { useClient } from '../../context/ClientContext';
 import { calculateValuation, formatPrice, getZoneInfo } from '../../lib/api/valuation';
+import { saveValuation } from '../../lib/api/valuations';
+import { getStreetViewUrl } from '../../lib/api/streetView';
 import type { ValuationResult as ValuationResultType } from '../../store/valuationStore';
 
 export default function ValuationResult() {
     const { goBack } = useValoradorNavigation();
-    const { propertyData, valuationResult, setValuationResult, isLoadingValuation, setLoadingValuation } = useValuationStore();
+    const { client } = useClient();
+    const {
+        propertyData,
+        valuationResult,
+        setValuationResult,
+        isLoadingValuation,
+        setLoadingValuation,
+        leadData,
+        setSavedValuationToken
+    } = useValuationStore();
 
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -14,22 +26,70 @@ export default function ValuationResult() {
     const [isSending, setIsSending] = useState(false);
     const [sent, setSent] = useState(false);
     const [showDetails, setShowDetails] = useState(false);
+    const hasSaved = useRef(false);
 
-    // Calculate valuation when component mounts
+    // Calculate valuation and save to database when component mounts
     useEffect(() => {
-        if (!valuationResult) {
-            setLoadingValuation(true);
+        const processValuation = async () => {
+            if (!valuationResult) {
+                setLoadingValuation(true);
 
-            // Simulate API delay for realism
-            const timer = setTimeout(() => {
+                // Calculate valuation
                 const result = calculateValuation(propertyData);
                 setValuationResult(result);
-                setLoadingValuation(false);
-            }, 1500);
 
-            return () => clearTimeout(timer);
-        }
-    }, [propertyData, valuationResult, setValuationResult, setLoadingValuation]);
+                // Save to database if we have lead data and haven't saved yet
+                if (leadData && client?.id && !hasSaved.current) {
+                    hasSaved.current = true;
+
+                    const streetViewUrl = propertyData.latitude && propertyData.longitude
+                        ? getStreetViewUrl(propertyData.latitude, propertyData.longitude)
+                        : undefined;
+
+                    const saved = await saveValuation({
+                        clientId: client.id,
+                        leadName: leadData.name,
+                        leadEmail: leadData.email,
+                        leadPhone: leadData.phone,
+                        address: propertyData.address || '',
+                        city: propertyData.city,
+                        postalCode: propertyData.postalCode,
+                        latitude: propertyData.latitude,
+                        longitude: propertyData.longitude,
+                        surface: propertyData.surface,
+                        constructionYear: propertyData.constructionYear,
+                        bedrooms: propertyData.bedrooms,
+                        bathrooms: propertyData.bathrooms,
+                        extras: propertyData.extras,
+                        finishQuality: propertyData.finishQuality,
+                        propertyType: propertyData.propertyType,
+                        buildingType: propertyData.buildingType,
+                        cadastralReference: propertyData.cadastralReference,
+                        estimatedValueMin: result.conservative,
+                        estimatedValueMax: result.optimistic,
+                        estimatedValueRecommended: result.estimated,
+                        pricePerM2: result.pricePerSqm,
+                        streetViewUrl,
+                    });
+
+                    if (saved) {
+                        setSavedValuationToken(saved.reportToken);
+                        console.log('Valuation saved with token:', saved.reportToken);
+                    }
+                }
+
+                setLoadingValuation(false);
+            }
+        };
+
+        processValuation();
+    }, [propertyData, valuationResult, setValuationResult, setLoadingValuation, leadData, client, setSavedValuationToken]);
+
+    // Pre-fill email from lead data
+    useEffect(() => {
+        if (leadData?.email) setEmail(leadData.email);
+        if (leadData?.phone) setPhone(leadData.phone || '');
+    }, [leadData]);
 
     // Get zone info if available
     const zoneInfo = propertyData.postalCode ? getZoneInfo(propertyData.postalCode) : null;
