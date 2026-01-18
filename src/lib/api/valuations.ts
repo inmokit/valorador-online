@@ -208,12 +208,20 @@ export async function sendValuationEmail(data: {
     estimatedValue: number;
     estimatedValueMin: number;
     estimatedValueMax: number;
+    pricePerM2?: number;
     surface?: number;
     bedrooms?: number;
     bathrooms?: number;
+    constructionYear?: number;
+    finishQuality?: string;
+    extras?: string[];
+    cadastralReference?: string;
+    streetViewUrl?: string;
     reportUrl: string;
     agentName?: string;
     agencyName?: string;
+    agentPhotoUrl?: string;
+    agencyLogoUrl?: string;
 }): Promise<boolean> {
     try {
         const { data: result, error } = await supabase.functions.invoke('send-valuation-email', {

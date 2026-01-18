@@ -87,12 +87,20 @@ export default function ValuationResult() {
                             estimatedValue: result.estimated,
                             estimatedValueMin: result.conservative,
                             estimatedValueMax: result.optimistic,
+                            pricePerM2: result.pricePerSqm,
                             surface: propertyData.surface,
                             bedrooms: propertyData.bedrooms,
                             bathrooms: propertyData.bathrooms,
+                            constructionYear: propertyData.constructionYear,
+                            finishQuality: propertyData.finishQuality,
+                            extras: propertyData.extras,
+                            cadastralReference: propertyData.cadastralReference,
+                            streetViewUrl,
                             reportUrl,
                             agentName: client.agent_name,
                             agencyName: client.agency_name,
+                            agentPhotoUrl: client.agent_photo_url,
+                            agencyLogoUrl: client.logo_url,
                         }).then((sent) => {
                             if (sent) {
                                 console.log('Valuation email sent successfully');
